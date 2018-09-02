@@ -75,7 +75,7 @@ public class DriverSearchTest{
         }
         catch(Exception e)
         { e.printStackTrace();}
-        
+
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
 

@@ -108,17 +108,26 @@ if(doesViewExist(R.id.textSearch))
 
         //Step 4: Press the Login Button
         Espresso.onView(withId(R.id.btn_login)).perform(click());
-
-        //Step 5:Verify that the user name is displayed correctly
-        Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
-       try {
+        try {
             Thread.sleep(10000);
         }
         catch(Exception e)
         { e.printStackTrace();}
         //Log ig out
 
-onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+
+        try {
+            Thread.sleep(2000);
+        }
+        catch(Exception e)
+        { e.printStackTrace();}
+
+
+        //Step 5:Verify that the user name is displayed correctly
+        Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
+
+
 
         try {
             Thread.sleep(5000);
