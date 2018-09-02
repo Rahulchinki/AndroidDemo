@@ -32,7 +32,7 @@ public class DriverSearchTest{
  public ActivityTestRule<MainActivity> mMainActivity =
          new ActivityTestRule<MainActivity>(MainActivity.class);
 
-    @Rule
+   @Rule
     public ActivityTestRule<AuthenticationActivity> mMainActivityauth=
             new ActivityTestRule<>(AuthenticationActivity.class);
 
@@ -48,6 +48,11 @@ public class DriverSearchTest{
 
     @Test
     public void doMainActivityTest(){
+        try {
+            Thread.sleep(10000);
+        }
+        catch(Exception e)
+        { e.printStackTrace();}
 
 
 

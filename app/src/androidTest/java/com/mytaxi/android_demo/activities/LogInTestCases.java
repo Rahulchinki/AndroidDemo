@@ -3,6 +3,7 @@ package com.mytaxi.android_demo.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.support.test.espresso.Espresso;
+import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.matcher.RootMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
@@ -51,12 +52,12 @@ import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.*;
-
+import android.support.test.espresso.contrib.DrawerActions;
 public class LogInTestCases {
 
-    @Rule
-    public ActivityTestRule<MainActivity> mMainActivity =
-            new ActivityTestRule<MainActivity>(MainActivity.class);
+   @Rule
+ public ActivityTestRule<MainActivity> mMainActivity =
+           new ActivityTestRule<MainActivity>(MainActivity.class);
 
     @Rule
     public ActivityTestRule<AuthenticationActivity> mMainActivityauth=
@@ -71,7 +72,26 @@ public class LogInTestCases {
     private String sInvalidUsername = "someInvalidUSername";
     private String sInvalidPassword = "VENTURE";
 
+@Before
+        public void setup()
+{
+if(doesViewExist(R.id.textSearch))
 
+    {
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
+       // onView(withId(R.id.drawer_layout)).perform(swipeLeft());
+        try {
+            Thread.sleep(5000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Log ig out
+        onView(withText("Logout")).perform(click());
+    }
+
+
+
+}
 
     @Test
     public void loginToMyTaxiPositiveScenario() {
@@ -91,13 +111,22 @@ public class LogInTestCases {
 
         //Step 5:Verify that the user name is displayed correctly
         Espresso.onView(withText(sUserName)).check(matches(isCompletelyDisplayed()));
-
+       try {
+            Thread.sleep(10000);
+        }
+        catch(Exception e)
+        { e.printStackTrace();}
         //Log ig out
-        //Espresso.onView(withId(R.id.map)).perform(swipeRight());
 
-       // Espresso.onView(withId(R.id.nav_logout)).perform(click());
+onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
 
-
+        try {
+            Thread.sleep(5000);
+        }
+        catch(Exception e)
+        { e.printStackTrace();}
+        //Log ig out
+        onView(withText("Logout")).perform(click());
 
     }
 
@@ -146,5 +175,12 @@ public class LogInTestCases {
     }
 
 
-
+    public boolean doesViewExist(int id) {
+        try {
+            onView(withId(id)).check(matches(isDisplayed()));
+            return true;
+        } catch (NoMatchingViewException e) {
+            return false;
+        }
+    }
 }
