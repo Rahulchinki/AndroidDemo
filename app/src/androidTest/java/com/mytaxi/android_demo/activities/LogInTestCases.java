@@ -79,7 +79,7 @@ if(doesViewExist(R.id.textSearch))
 
     {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
-       // onView(withId(R.id.drawer_layout)).perform(swipeLeft());
+        //onView(withId(R.id.drawer_layout)).perform(swipeLeft());
         try {
             Thread.sleep(5000);
         } catch (Exception e) {
@@ -110,7 +110,7 @@ if(doesViewExist(R.id.textSearch))
         Espresso.onView(withId(R.id.btn_login)).perform(click());
 
         //Step 5:Verify that the user name is displayed correctly
-        Espresso.onView(withText(sUserName)).check(matches(isCompletelyDisplayed()));
+        Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
        try {
             Thread.sleep(10000);
         }

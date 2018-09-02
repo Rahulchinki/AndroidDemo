@@ -4,6 +4,7 @@ package com.mytaxi.android_demo.activities;
 import android.Manifest;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.contrib.DrawerActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
 
@@ -69,6 +70,13 @@ public class DriverSearchTest{
         Espresso.onView(withId(R.id.btn_login)).perform(click());
 
         //Step 5:Verify that the user name is displayed correctly
+        try {
+            Thread.sleep(10000);
+        }
+        catch(Exception e)
+        { e.printStackTrace();}
+        
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
         Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
 
 try {
