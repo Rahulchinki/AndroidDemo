@@ -54,10 +54,10 @@ import static org.junit.Assert.*;
 
 public class LogInTestCases {
 
-   /* @Rule
+    @Rule
     public ActivityTestRule<MainActivity> mMainActivity =
             new ActivityTestRule<MainActivity>(MainActivity.class);
-*/
+
     @Rule
     public ActivityTestRule<AuthenticationActivity> mMainActivityauth=
             new ActivityTestRule<>(AuthenticationActivity.class);
@@ -92,8 +92,10 @@ public class LogInTestCases {
         //Step 5:Verify that the user name is displayed correctly
         Espresso.onView(withText(sUserName)).check(matches(isCompletelyDisplayed()));
 
+        //Log ig out
+        //Espresso.onView(withId(R.id.map)).perform(swipeRight());
 
-
+       // Espresso.onView(withId(R.id.nav_logout)).perform(click());
 
 
 
