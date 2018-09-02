@@ -83,7 +83,7 @@ public class DriverSearchTest {
             //Step 4: Press the Login Button
             Espresso.onView(withId(R.id.btn_login)).perform(click());
 
-            //Step 5:Verify that the user name is displayed correctly
+         /*   //Step 5:Verify that the user name is displayed correctly
             try {
                 Thread.sleep(10000);
             } catch (Exception e) {
@@ -93,7 +93,7 @@ public class DriverSearchTest {
            onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
             Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
             onView(withId(R.id.drawer_layout)).perform(DrawerActions.close());
-
+        */
             try {
                 Thread.sleep(10000);
             } catch (Exception e) {
