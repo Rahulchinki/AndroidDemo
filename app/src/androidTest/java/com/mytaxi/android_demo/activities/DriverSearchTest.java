@@ -67,7 +67,7 @@ public class DriverSearchTest{
         Espresso.onView(withText(sUserName)).check(matches(isCompletelyDisplayed()));
 
 try {
-    Thread.sleep(5000);
+    Thread.sleep(10000);
 }
 catch(Exception e)
 { e.printStackTrace();}
@@ -75,7 +75,7 @@ catch(Exception e)
         onView(withId(R.id.textSearch)).perform(typeText("sa")) ; //enter text "sa" search text
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         }
         catch(Exception e)
         { e.printStackTrace();}
