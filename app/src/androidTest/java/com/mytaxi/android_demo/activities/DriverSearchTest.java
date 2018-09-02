@@ -69,7 +69,7 @@ public class DriverSearchTest{
         Espresso.onView(withId(R.id.btn_login)).perform(click());
 
         //Step 5:Verify that the user name is displayed correctly
-        Espresso.onView(withText(sUserName)).check(matches(isCompletelyDisplayed()));
+        Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
 
 try {
     Thread.sleep(10000);
