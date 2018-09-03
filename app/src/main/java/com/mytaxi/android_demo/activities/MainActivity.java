@@ -261,7 +261,7 @@ public class MainActivity extends AuthenticatedActivity
 
 
 
-    @VisibleForTesting
+
     @NonNull
     public IdlingResource getIdlingResource() {
         if (mIdlingResource == null) {
