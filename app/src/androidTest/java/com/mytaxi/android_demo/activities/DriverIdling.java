@@ -5,10 +5,13 @@ package com.mytaxi.android_demo.activities;
 
 import android.Manifest;
 import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.contrib.DrawerActions;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.espresso.IdlingResource;
+
 import android.support.test.rule.GrantPermissionRule;
 
 import com.mytaxi.android_demo.R;
@@ -47,24 +50,32 @@ public class DriverIdling {
 
     private String sUserName = "crazydog335";
     private String sPassword = "venture";
+    private IdlingResource mIdlingResource1;
+    private IdlingResource mIdlingResource2;
 
 
     @Before
 
     public void setup() {
+
+
+        mIdlingResource1 = mMainActivity.getActivity().getIdlingResource();
+        mIdlingResource2 = mMainActivityauth.getActivity().getIdlingResource();
         if (doesViewExist(R.id.textSearch))
 
         {
+            IdlingRegistry.getInstance().register(mIdlingResource1);
             onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
             //onView(withId(R.id.drawer_layout)).perform(swipeLeft());
-            try {
+            /*try {
                 Thread.sleep(5000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            //Log ig out
+*/            //Log ig out
             onView(withText("Logout")).perform(click());
         }
+        IdlingRegistry.getInstance().unregister(mIdlingResource1);
     }
 
 

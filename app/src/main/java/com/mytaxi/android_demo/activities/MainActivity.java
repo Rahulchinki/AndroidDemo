@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.mytaxi.android_demo.App;
+import com.mytaxi.android_demo.IdleResourceHandler.IdleResource;
 import com.mytaxi.android_demo.R;
 import com.mytaxi.android_demo.adapters.DriverAdapter;
 import com.mytaxi.android_demo.dependencies.component.AppComponent;
@@ -55,6 +56,7 @@ public class MainActivity extends AuthenticatedActivity
 
     private static final String KEY_LOCATION = "location";
 
+    @Nullable private IdleResource mIdlingResource;
 
     @Inject
     HttpClient mHttpClient;
@@ -259,5 +261,12 @@ public class MainActivity extends AuthenticatedActivity
 
 
 
-
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new IdleResource();
+        }
+        return mIdlingResource;
+    }
 }

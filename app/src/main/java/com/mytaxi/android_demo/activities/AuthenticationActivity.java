@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.mytaxi.android_demo.App;
+import com.mytaxi.android_demo.IdleResourceHandler.IdleResource;
 import com.mytaxi.android_demo.R;
 import com.mytaxi.android_demo.dependencies.component.AppComponent;
 import com.mytaxi.android_demo.utils.network.HttpClient;
@@ -45,6 +46,7 @@ public class AuthenticationActivity extends AppCompatActivity {
 
     private EditText mEditTextUsername;
     private EditText mEditTextPassword;
+    @Nullable private IdleResource mIdlingResource;
 
     private static final String RANDOM_USER_SEED = "a1f30d446f820665";
 
@@ -105,4 +107,12 @@ public class AuthenticationActivity extends AppCompatActivity {
     }
 
 
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new IdleResource();
+        }
+        return mIdlingResource;
+    }
 }
