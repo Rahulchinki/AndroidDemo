@@ -118,8 +118,9 @@ public class DriverSearchTest {
         }
 
         onView(withId(R.id.searchContainer)).check(matches(isDisplayed()));
-        onView(withText(containsString("Sarah"))).inRoot(withDecorView(not(mMainActivity.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
         IdlingRegistry.getInstance().unregister(mIdlingResource1);
+        onView(withText(containsString("Sarah"))).inRoot(withDecorView(not(mMainActivity.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
+
         //Step 7: Click on the Second Name
         onView(withText("Sarah Scott")).inRoot(withDecorView(not(mMainActivity.getActivity().getWindow().getDecorView()))).perform(click());
 

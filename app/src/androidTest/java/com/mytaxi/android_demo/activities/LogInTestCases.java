@@ -175,7 +175,8 @@ if(doesViewExist(R.id.textSearch))
         //Step 1 : Enter valid username in the input field with heading  username
         onView(withId(R.id.edt_username)).perform(typeText(sUserName));
 
-        //Step 2: Enter invalid password string associated with username
+        //Step 2:
+        // Enter invalid password string associated with username
         onView(withId(R.id.edt_password)).perform(typeText(sInvalidPassword));
 
         //Step 3: close the   keyboard
