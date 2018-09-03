@@ -126,6 +126,7 @@ public class DriverSearchTest {
 
         //Step 8: Check that the driver Profle is of  the seond name selected
         onView(withId(R.id.textViewDriverName)).check(matches(withText("Sarah Scott")));
+
         //Step 9 Call the Driver
         onView(withId(R.id.fab)).perform(click());
 
