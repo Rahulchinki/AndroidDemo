@@ -119,9 +119,14 @@ public class DriverSearchTest {
 
 
         //Step 6 : check that list of driver names is displayed in the drop down and click on second name in the list Sarah Scott
+        while(!(doesViewExist(R.id.searchContainer)))
+        {
+            IdlingRegistry.getInstance().register(mIdlingResource1);
+        }
+
         onView(withId(R.id.searchContainer)).check(matches(isDisplayed()));
         onView(withText(containsString("Sarah"))).inRoot(withDecorView(not(mMainActivity.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
-
+        IdlingRegistry.getInstance().unregister(mIdlingResource1);
         //Step 7: Click on the Second Name
         onView(withText("Sarah Scott")).inRoot(withDecorView(not(mMainActivity.getActivity().getWindow().getDecorView()))).perform(click());
 

@@ -9,12 +9,7 @@ public class IdleResource implements IdlingResource  {
 
 
 
-   /**
-     * A very simple implementation of {@link IdlingResource}.
-     * <p>
-     * Consider using CountingIdlingResource from espresso-contrib package if you use this class from
-     * multiple threads or need to keep a count of pending operations.
-     */
+
 
 
         @Nullable private volatile ResourceCallback mCallback;
@@ -37,10 +32,6 @@ public class IdleResource implements IdlingResource  {
             mCallback = callback;
         }
 
-        /**
-         * Sets the new idle state, if isIdleNow is true, it pings the {@link ResourceCallback}.
-         * @param isIdleNow false if there are pending operations, true if idle.
-         */
         public void setIdleState(boolean isIdleNow) {
             mIsIdleNow.set(isIdleNow);
             if (isIdleNow && mCallback != null) {
