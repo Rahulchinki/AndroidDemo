@@ -125,7 +125,7 @@ public class DriverSearchTest {
             onView(withId(R.id.textViewDriverName)).check(matches(withText("Sarah Scott")));
 
             onView(withId(R.id.fab)).perform(click());
-
+            
 
         }
 

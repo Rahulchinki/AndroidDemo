@@ -39,6 +39,7 @@ import com.mytaxi.android_demo.utils.storage.SharedPrefStorage;
 
 import javax.inject.Inject;
 
+
 import static com.mytaxi.android_demo.misc.Constants.DEFAULT_LOCATION;
 import static com.mytaxi.android_demo.misc.Constants.DEFAULT_ZOOM;
 import static com.mytaxi.android_demo.misc.Constants.LOG_TAG;
@@ -246,5 +247,10 @@ public class MainActivity extends AuthenticatedActivity
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
         }
     }
+
+
+
+
+
 
 }
