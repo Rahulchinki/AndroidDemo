@@ -50,7 +50,6 @@ import static com.mytaxi.android_demo.misc.Constants.DEFAULT_LOCATION;
 import static com.mytaxi.android_demo.misc.Constants.DEFAULT_ZOOM;
 import static com.mytaxi.android_demo.misc.Constants.LOG_TAG;
 import static com.mytaxi.android_demo.utils.PermissionHelper.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION;
-
 public class MainActivity extends AuthenticatedActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 

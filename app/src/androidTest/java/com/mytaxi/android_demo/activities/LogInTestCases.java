@@ -58,6 +58,8 @@ import static org.junit.Assert.*;
 import android.support.test.espresso.contrib.DrawerActions;
 public class LogInTestCases {
 
+
+
    @Rule
  public ActivityTestRule<MainActivity> mMainActivity =
            new ActivityTestRule<MainActivity>(MainActivity.class);
@@ -65,9 +67,6 @@ public class LogInTestCases {
     @Rule
     public ActivityTestRule<AuthenticationActivity> mMainActivityauth=
             new ActivityTestRule<>(AuthenticationActivity.class);
-
-
-
 
 
     @Rule
@@ -85,18 +84,14 @@ public class LogInTestCases {
 {
     mIdlingResource1 = mMainActivity.getActivity().getIdlingResource();
 
-if(doesViewExist(R.id.textSearch))
+    /* if the app is already open or logged in to Log out of the app
 
-    {
+     */
+    if(doesViewExist(R.id.textSearch)) {
 
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
 
-        /*try {
-            Thread.sleep(5000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-        //Log ig out
+
         onView(withText("Logout")).perform(click());
     }
 
@@ -104,27 +99,35 @@ if(doesViewExist(R.id.textSearch))
 
 }
 
+/* Scenario 1:
+    Happy path scenario where we check when valid username and password are entered, user is logged in
+    successfully to the app
+
+ */
     @Test
     public void loginToMyTaxiPositiveScenario() {
 
 
-        //Step 1 : Enter valid username in the input field with heading  username
+        /*Step 1 : Enter valid username in the input field with heading  username
+
+         */
         Espresso.onView(withId(R.id.edt_username)).perform(typeText(sUserName));
 
-        //Step 2: Enter valid password string associated with username
+        /*Step 2: Enter valid password string associated with username
+
+         */
         Espresso.onView(withId(R.id.edt_password)).perform(typeText(sPassword));
 
-        //Step 3: close the   keyboard
+        /*Step 3: closet the  softkeyboard
+
+         */
         Espresso.closeSoftKeyboard();
 
-        //Step 4: Press the Login Button
+        /*Step 4: Press the Login Button
+
+         */
         Espresso.onView(withId(R.id.btn_login)).perform(click());
 
-      /*  while(!(doesViewExist(R.id.textSearch)))
-        {
-            SystemClock.sleep(200);
-        }
-*/
         while(!(doesViewExist(R.id.textSearch)))
         {
             IdlingRegistry.getInstance().register(mIdlingResource1);
@@ -137,7 +140,9 @@ if(doesViewExist(R.id.textSearch))
 
 
 
-        //Step 5:Verify that the user name is displayed correctly
+        /*Step 5:Verify that the user name is displayed correctly
+
+         */
         Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
 
 
@@ -147,52 +152,81 @@ if(doesViewExist(R.id.textSearch))
 
     }
 
+    /*  Scenario 2:
+        To Verify that "Login Failed" message is displayed in case the user enters valid password and an invalid username
+     */
+
 
     @Test
     public void checkInvalidLoginUsername() {
 
-        //Step 1 : Enter invalid username in the input field with heading  username
+        /*Step 1 : Enter invalid username in the input field with heading  username
+
+         */
         onView(withId(R.id.edt_username)).perform(typeText(sInvalidUsername));
 
-        //Step 2: Enter valid password string associated with username
+        /*Step 2: Enter valid password string associated with username
+
+         */
         onView(withId(R.id.edt_password)).perform(typeText(sPassword));
 
-        //Step 3: close the   keyboard
+        /*Step 3: close the   keyboard
+
+         */
         Espresso.closeSoftKeyboard();
 
-        //Step 4: Press the Login Button
+        /*Step 4: Press the Login Button
+
+         */
         onView(withId(R.id.btn_login)).perform(click());
 
 
-        //Step 5:Check that the login failed message pops up
+        /*Step 5:Check that the login failed message pops up
+
+         */
         onView(withId(android.R.id.content)).check(matches(isDisplayed()));
 
     }
 
-/*To Verify that Login Failed Message is displayed in case the user enters Wrong password and valid username*/
+/*  Scenario 3:
+    To Verify that "Login Failed" message is displayed in case the user enters Wrong password and valid username
+*/
     @Test
     public void checkInvalidPassword() {
-        //Step 1 : Enter valid username in the input field with heading  username
+        /*Step 1 : Enter valid username in the input field with heading  username
+
+         */
         onView(withId(R.id.edt_username)).perform(typeText(sUserName));
 
-        //Step 2:
-        // Enter invalid password string associated with username
+        /*Step 2: Enter invalid password string associated with username
+
+         */
         onView(withId(R.id.edt_password)).perform(typeText(sInvalidPassword));
 
-        //Step 3: close the   keyboard
+        /*Step 3: close the   keyboard
+
+         */
         Espresso.closeSoftKeyboard();
 
-        //Step 4: Press the Login Button
+        /*Step 4: Press the Login Button
+
+         */
         onView(withId(R.id.btn_login)).perform(click());
 
 
-        //Step 5:Check that the login failed message pops up
+        /*Step 5:Check that the login failed message pops up
+
+         */
         onView(withId(android.R.id.content)).check(matches(isDisplayed()));
 
 
     }
 
+/* Function for checking if view exists then return boolean(true) in response
+  return false;
+    to the condition
 
+ */
     public boolean doesViewExist(int id) {
         try {
             onView(withId(id)).check(matches(isDisplayed()));

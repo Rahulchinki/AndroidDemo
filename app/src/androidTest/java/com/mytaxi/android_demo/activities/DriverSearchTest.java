@@ -33,7 +33,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.IsNot.not;
 
-
+/*  Scenario:
+    Test case for DriverSearch Test
+    where we have to select the second Driver in the searhed list by Name
+ */
 public class DriverSearchTest {
     @Rule
     public ActivityTestRule<MainActivity> mMainActivity =
@@ -85,16 +88,24 @@ public class DriverSearchTest {
 
 
 
-        //Step 1 : Enter valid username in the input field with heading  username
+        /*Step 1 : Enter valid username in the input field with heading  username
+
+         */
         Espresso.onView(withId(R.id.edt_username)).perform(typeText(sUserName));
 
-        //Step 2: Enter valid password string associated with username
+        /*Step 2: Enter valid password string associated with username
+
+         */
         Espresso.onView(withId(R.id.edt_password)).perform(typeText(sPassword));
 
-        //Step 3: close the   keyboard
+        /*Step 3: close the   keyboard
+
+         */
         Espresso.closeSoftKeyboard();
 
-        //Step 4: Press the Login Button
+        /*Step 4: Press the Login Button
+
+         */
         Espresso.onView(withId(R.id.btn_login)).perform(click());
 
 
@@ -108,10 +119,12 @@ public class DriverSearchTest {
         onView(withId(R.id.textSearch)).check(matches(isDisplayed()));
 
         IdlingRegistry.getInstance().unregister(mIdlingResource1);
-        onView(withId(R.id.textSearch)).perform(typeText("sa")); //enter text "sa" search
+        onView(withId(R.id.textSearch)).perform(typeText("sa"));
 
 
-        //Step 6: Check that list of driver names is displayed in the drop down and click on second name in the list Sarah Scott
+        /*Step 6: Check that list of driver names is displayed in the drop down and click on second name in the list Sarah Scott
+
+         */
         while(!(doesViewExist(R.id.searchContainer)))
         {
             IdlingRegistry.getInstance().register(mIdlingResource1);
@@ -121,13 +134,19 @@ public class DriverSearchTest {
         IdlingRegistry.getInstance().unregister(mIdlingResource1);
         onView(withText(containsString("Sarah"))).inRoot(withDecorView(not(mMainActivity.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
 
-        //Step 7: Click on the Second Name
+        /*Step 7: Click on the Second Name
+
+         */
         onView(withText("Sarah Scott")).inRoot(withDecorView(not(mMainActivity.getActivity().getWindow().getDecorView()))).perform(click());
 
-        //Step 8: Check that the driver Profle is of  the seond name selected
+        /*Step 8: Check that the driver Profle is of  the seond name selected
+
+         */
         onView(withId(R.id.textViewDriverName)).check(matches(withText("Sarah Scott")));
 
-        //Step 9: Call the Driver
+        /*Step 9: Call the Driver
+
+         */
         onView(withId(R.id.fab)).perform(click());
 
 
