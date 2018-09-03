@@ -133,6 +133,8 @@ if(doesViewExist(R.id.textSearch))
 
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
 
+        IdlingRegistry.getInstance().unregister(mIdlingResource1);
+
 /*
         try {
             Thread.sleep(2000);
