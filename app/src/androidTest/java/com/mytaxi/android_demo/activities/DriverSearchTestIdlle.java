@@ -128,7 +128,7 @@ public class DriverSearchTestIdlle {
             onView(withId(R.id.drawer_layout)).perform(DrawerActions.close());
         */
            try {
-                Thread.sleep(2000);
+                Thread.sleep(10000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
