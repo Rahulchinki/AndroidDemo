@@ -127,7 +127,7 @@ public class DriverSearchTestIdlle {
             Espresso.onView(withText(sUserName)).check(matches(isDisplayed()));
             onView(withId(R.id.drawer_layout)).perform(DrawerActions.close());
         */
-         /  try {
+           try {
                 Thread.sleep(2000);
             } catch (Exception e) {
                 e.printStackTrace();
