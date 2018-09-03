@@ -16,6 +16,11 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
+
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,7 +41,7 @@ import com.mytaxi.android_demo.models.Driver;
 import com.mytaxi.android_demo.utils.PermissionHelper;
 import com.mytaxi.android_demo.utils.network.HttpClient;
 import com.mytaxi.android_demo.utils.storage.SharedPrefStorage;
-
+import com.mytaxi.android_demo.IdlingResourceImplementation.SimpleIdlingResource;
 import javax.inject.Inject;
 
 
@@ -49,6 +54,8 @@ public class MainActivity extends AuthenticatedActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
     private static final String KEY_LOCATION = "location";
+    @Nullable private SimpleIdlingResource mIdlingResource;
+
 
     @Inject
     HttpClient mHttpClient;
@@ -251,6 +258,15 @@ public class MainActivity extends AuthenticatedActivity
 
 
 
+
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new SimpleIdlingResource();
+        }
+        return mIdlingResource;
+    }
 
 
 }

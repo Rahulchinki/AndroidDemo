@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -28,8 +29,15 @@ import javax.inject.Inject;
 
 import static com.mytaxi.android_demo.misc.Constants.LOG_TAG;
 
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
+
+import com.mytaxi.android_demo.IdlingResourceImplementation.SimpleIdlingResource;
+
 public class AuthenticationActivity extends AppCompatActivity {
 
+    @Nullable private SimpleIdlingResource mIdlingResource;
     @Inject
     HttpClient mHttpClient;
 
@@ -97,4 +105,13 @@ public class AuthenticationActivity extends AppCompatActivity {
         return passwordWithSalt;
     }
 
+
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new SimpleIdlingResource();
+        }
+        return mIdlingResource;
+    }
 }
