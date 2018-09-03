@@ -69,11 +69,11 @@ public class DriverSearchTestIdlle {
         {
             onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
             //onView(withId(R.id.drawer_layout)).perform(swipeLeft());
-            /*try {
+            try {
                 Thread.sleep(5000);
             } catch (Exception e) {
                 e.printStackTrace();
-            }*/
+            }
             //Log ig out
             onView(withText("Logout")).perform(click());
         }
