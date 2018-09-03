@@ -1,3 +1,4 @@
+
 package com.mytaxi.android_demo.activities;
 
 
@@ -35,7 +36,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.IsNot.not;
 
 
-public class DriverIdling {
+public class DriverSTest {
     @Rule
     public ActivityTestRule<MainActivity> mMainActivity =
             new ActivityTestRule<MainActivity>(MainActivity.class);
@@ -132,4 +133,3 @@ public class DriverIdling {
         }
     }
 }
-
