@@ -109,12 +109,11 @@ if(doesViewExist(R.id.textSearch))
 
         //Step 4: Press the Login Button
         Espresso.onView(withId(R.id.btn_login)).perform(click());
-        try {
-            Thread.sleep(10000);
+
+        while(!(doesViewExist(R.id.textSearch)))
+        {
+            SystemClock.sleep(200);
         }
-        catch(Exception e)
-        { e.printStackTrace();}
-        //Log ig out
 
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
 
@@ -130,12 +129,7 @@ if(doesViewExist(R.id.textSearch))
 
 
 
-        try {
-            Thread.sleep(5000);
-        }
-        catch(Exception e)
-        { e.printStackTrace();}
-        //Log ig out
+
         onView(withText("Logout")).perform(click());
 
     }
