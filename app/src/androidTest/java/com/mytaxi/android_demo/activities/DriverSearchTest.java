@@ -2,8 +2,6 @@
 package com.mytaxi.android_demo.activities;
 
 
-
-
 import android.Manifest;
 import android.os.SystemClock;
 import android.support.test.espresso.Espresso;
@@ -64,9 +62,7 @@ public class DriverSearchTest {
 
         mIdlingResource1 = mMainActivity.getActivity().getIdlingResource();
         mIdlingResource2 = mMainActivityauth.getActivity().getIdlingResource();
-        /*IdlingRegistry.getInstance().register(mIdlingResource1);
-        IdlingRegistry.getInstance().register(mIdlingResource2);
-*/
+
         if (doesViewExist(R.id.textSearch))
 
         {
@@ -80,9 +76,6 @@ public class DriverSearchTest {
 
     @After
     public void UnRegister(){
-        /*IdlingRegistry.getInstance().unregister(mIdlingResource1);
-        IdlingRegistry.getInstance().unregister(mIdlingResource2);
-*/
 
     }
 

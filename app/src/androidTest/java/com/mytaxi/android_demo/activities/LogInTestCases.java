@@ -135,13 +135,6 @@ if(doesViewExist(R.id.textSearch))
 
         IdlingRegistry.getInstance().unregister(mIdlingResource1);
 
-/*
-        try {
-            Thread.sleep(2000);
-        }
-        catch(Exception e)
-        { e.printStackTrace();}
-*/
 
 
         //Step 5:Verify that the user name is displayed correctly
