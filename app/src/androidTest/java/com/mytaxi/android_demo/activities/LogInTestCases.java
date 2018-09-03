@@ -59,8 +59,7 @@ import android.support.test.espresso.contrib.DrawerActions;
 public class LogInTestCases {
 
 
-
-   @Rule
+    @Rule
  public ActivityTestRule<MainActivity> mMainActivity =
            new ActivityTestRule<MainActivity>(MainActivity.class);
 
@@ -75,7 +74,7 @@ public class LogInTestCases {
 
     private String sUserName = "crazydog335";
     private String sPassword = "venture";
-    private String sInvalidUsername = "someInvalidUSername";
+    private String sInvalidUsername = "someInvalidUser";
     private String sInvalidPassword = "VENTURE";
     private IdlingResource mIdlingResource1;
 
@@ -98,7 +97,6 @@ public class LogInTestCases {
 
 
 }
-
 /* Scenario 1:
     Happy path scenario where we check when valid username and password are entered, user is logged in
     successfully to the app

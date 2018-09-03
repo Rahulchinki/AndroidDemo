@@ -54,7 +54,6 @@ public class DriverSearchTest {
     private String sUserName = "crazydog335";
     private String sPassword = "venture";
     private IdlingResource mIdlingResource1;
-    private IdlingResource mIdlingResource2;
 
 
 
@@ -64,7 +63,6 @@ public class DriverSearchTest {
 
 
         mIdlingResource1 = mMainActivity.getActivity().getIdlingResource();
-        mIdlingResource2 = mMainActivityauth.getActivity().getIdlingResource();
 
         if (doesViewExist(R.id.textSearch))
 
