@@ -2,6 +2,7 @@ package com.mytaxi.android_demo.activities;
 
 import android.Manifest;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.matcher.RootMatchers;
@@ -192,4 +193,9 @@ if(doesViewExist(R.id.textSearch))
             return false;
         }
     }
+
+
+
+
+
 }

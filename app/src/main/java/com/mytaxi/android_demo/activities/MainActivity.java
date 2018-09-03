@@ -41,7 +41,7 @@ import com.mytaxi.android_demo.models.Driver;
 import com.mytaxi.android_demo.utils.PermissionHelper;
 import com.mytaxi.android_demo.utils.network.HttpClient;
 import com.mytaxi.android_demo.utils.storage.SharedPrefStorage;
-import com.mytaxi.android_demo.IdlingResourceImplementation.SimpleIdlingResource;
+
 import javax.inject.Inject;
 
 
@@ -54,7 +54,6 @@ public class MainActivity extends AuthenticatedActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
     private static final String KEY_LOCATION = "location";
-    @Nullable private SimpleIdlingResource mIdlingResource;
 
 
     @Inject
@@ -259,14 +258,6 @@ public class MainActivity extends AuthenticatedActivity
 
 
 
-    @VisibleForTesting
-    @NonNull
-    public IdlingResource getIdlingResource() {
-        if (mIdlingResource == null) {
-            mIdlingResource = new SimpleIdlingResource();
-        }
-        return mIdlingResource;
-    }
 
 
 }

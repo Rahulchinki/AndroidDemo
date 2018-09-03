@@ -33,11 +33,10 @@ import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.support.test.espresso.IdlingResource;
 
-import com.mytaxi.android_demo.IdlingResourceImplementation.SimpleIdlingResource;
+
 
 public class AuthenticationActivity extends AppCompatActivity {
 
-    @Nullable private SimpleIdlingResource mIdlingResource;
     @Inject
     HttpClient mHttpClient;
 
@@ -106,12 +105,4 @@ public class AuthenticationActivity extends AppCompatActivity {
     }
 
 
-    @VisibleForTesting
-    @NonNull
-    public IdlingResource getIdlingResource() {
-        if (mIdlingResource == null) {
-            mIdlingResource = new SimpleIdlingResource();
-        }
-        return mIdlingResource;
-    }
 }
