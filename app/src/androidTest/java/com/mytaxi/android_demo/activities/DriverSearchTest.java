@@ -104,14 +104,14 @@ public class DriverSearchTest {
         {
             IdlingRegistry.getInstance().register(mIdlingResource1);
         }
-        //Step 5: type the string to be searched
-        onView(withId(R.id.textSearch)).check(matches(isDisplayed())); //enter text "sa" search
+        //Step 5: Type the string to be searched
+        onView(withId(R.id.textSearch)).check(matches(isDisplayed()));
 
         IdlingRegistry.getInstance().unregister(mIdlingResource1);
         onView(withId(R.id.textSearch)).perform(typeText("sa")); //enter text "sa" search
 
 
-        //Step 6 : check that list of driver names is displayed in the drop down and click on second name in the list Sarah Scott
+        //Step 6: Check that list of driver names is displayed in the drop down and click on second name in the list Sarah Scott
         while(!(doesViewExist(R.id.searchContainer)))
         {
             IdlingRegistry.getInstance().register(mIdlingResource1);
@@ -127,7 +127,7 @@ public class DriverSearchTest {
         //Step 8: Check that the driver Profle is of  the seond name selected
         onView(withId(R.id.textViewDriverName)).check(matches(withText("Sarah Scott")));
 
-        //Step 9 Call the Driver
+        //Step 9: Call the Driver
         onView(withId(R.id.fab)).perform(click());
 
 

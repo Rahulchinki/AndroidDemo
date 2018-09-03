@@ -169,7 +169,7 @@ if(doesViewExist(R.id.textSearch))
 
     }
 
-
+/*To Verify that Login Failed Message is displayed in case the user enters Wrong password and valid username*/
     @Test
     public void checkInvalidPassword() {
         //Step 1 : Enter valid username in the input field with heading  username
