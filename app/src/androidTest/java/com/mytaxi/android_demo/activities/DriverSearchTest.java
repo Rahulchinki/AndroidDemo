@@ -36,7 +36,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.IsNot.not;
 
 
-public class DriverSTest {
+public class DriverSearchTest {
     @Rule
     public ActivityTestRule<MainActivity> mMainActivity =
             new ActivityTestRule<MainActivity>(MainActivity.class);
@@ -44,6 +44,7 @@ public class DriverSTest {
     @Rule
     public ActivityTestRule<AuthenticationActivity> mMainActivityauth =
             new ActivityTestRule<>(AuthenticationActivity.class);
+
 
     @Rule
     public GrantPermissionRule pRule = GrantPermissionRule.grant(
@@ -55,6 +56,7 @@ public class DriverSTest {
     private IdlingResource mIdlingResource2;
 
 
+
     @Before
 
     public void setup() {
@@ -62,8 +64,9 @@ public class DriverSTest {
 
         mIdlingResource1 = mMainActivity.getActivity().getIdlingResource();
         mIdlingResource2 = mMainActivityauth.getActivity().getIdlingResource();
-        IdlingRegistry.getInstance().register(mIdlingResource1);
+        /*IdlingRegistry.getInstance().register(mIdlingResource1);
         IdlingRegistry.getInstance().register(mIdlingResource2);
+*/
         if (doesViewExist(R.id.textSearch))
 
         {
@@ -77,13 +80,15 @@ public class DriverSTest {
 
     @After
     public void UnRegister(){
-        IdlingRegistry.getInstance().unregister(mIdlingResource1);
+        /*IdlingRegistry.getInstance().unregister(mIdlingResource1);
         IdlingRegistry.getInstance().unregister(mIdlingResource2);
+*/
+
     }
 
 
     @Test
-    public void doMainActivityTest () {
+    public void searchDriver () {
 
 
 
@@ -100,11 +105,16 @@ public class DriverSTest {
         Espresso.onView(withId(R.id.btn_login)).perform(click());
 
 
+
+
         while(!(doesViewExist(R.id.textSearch)))
         {
-            SystemClock.sleep(200);
+            IdlingRegistry.getInstance().register(mIdlingResource1);
         }
         //Step 5: type the string to be searched
+        onView(withId(R.id.textSearch)).check(matches(isDisplayed())); //enter text "sa" search
+
+        IdlingRegistry.getInstance().unregister(mIdlingResource1);
         onView(withId(R.id.textSearch)).perform(typeText("sa")); //enter text "sa" search
 
 
@@ -133,3 +143,10 @@ public class DriverSTest {
         }
     }
 }
+
+
+
+
+
+
+

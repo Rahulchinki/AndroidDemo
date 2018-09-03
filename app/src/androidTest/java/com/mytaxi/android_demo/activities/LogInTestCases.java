@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingRegistry;
+import android.support.test.espresso.IdlingResource;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.matcher.RootMatchers;
 import android.support.test.rule.ActivityTestRule;
@@ -64,6 +66,10 @@ public class LogInTestCases {
     public ActivityTestRule<AuthenticationActivity> mMainActivityauth=
             new ActivityTestRule<>(AuthenticationActivity.class);
 
+
+
+
+
     @Rule
     public GrantPermissionRule pRule =GrantPermissionRule.grant(
             Manifest.permission.ACCESS_FINE_LOCATION);
@@ -72,20 +78,24 @@ public class LogInTestCases {
     private String sPassword = "venture";
     private String sInvalidUsername = "someInvalidUSername";
     private String sInvalidPassword = "VENTURE";
+    private IdlingResource mIdlingResource1;
 
-@Before
+    @Before
         public void setup()
 {
+    mIdlingResource1 = mMainActivity.getActivity().getIdlingResource();
+
 if(doesViewExist(R.id.textSearch))
 
     {
+
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
-        //onView(withId(R.id.drawer_layout)).perform(swipeLeft());
-        try {
+
+        /*try {
             Thread.sleep(5000);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         //Log ig out
         onView(withText("Logout")).perform(click());
     }
@@ -110,18 +120,26 @@ if(doesViewExist(R.id.textSearch))
         //Step 4: Press the Login Button
         Espresso.onView(withId(R.id.btn_login)).perform(click());
 
-        while(!(doesViewExist(R.id.textSearch)))
+      /*  while(!(doesViewExist(R.id.textSearch)))
         {
             SystemClock.sleep(200);
         }
+*/
+        while(!(doesViewExist(R.id.textSearch)))
+        {
+            IdlingRegistry.getInstance().register(mIdlingResource1);
+        }
+
 
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
 
+/*
         try {
             Thread.sleep(2000);
         }
         catch(Exception e)
         { e.printStackTrace();}
+*/
 
 
         //Step 5:Verify that the user name is displayed correctly
